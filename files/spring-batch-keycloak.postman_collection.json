@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "3a7d47be-a66f-4f40-bb48-5a0d639c37d0",
+		"name": "spring-batch-keycloak",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "exemplo-execucao-job-manualmente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"usuarioJob\", \r\n    \"jobParameters\":\r\n        {\r\n            \"foo\":\"bar\", \r\n            \"baz\":\"quix\"\r\n        }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuariojob/run",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuariojob",
+						"run"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
