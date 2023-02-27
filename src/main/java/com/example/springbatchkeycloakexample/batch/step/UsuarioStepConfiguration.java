@@ -19,13 +19,14 @@ public class UsuarioStepConfiguration {
     @Bean
     public Step usuarioStep(
             ItemReader<UsuarioOrigem> usuarioOrigemReader,
-            @Qualifier("usuarioOrigemWriter") ItemWriter<UsuarioOrigem> usuarioOrigemWriter
+//            @Qualifier("usuarioOrigemWriter") ItemWriter<UsuarioOrigem> usuarioOrigemWriter
+            @Qualifier("usuarioOrigemWriterRest") ItemWriter<UsuarioOrigem> usuarioOrigemWriterRest
     ) {
         return stepBuilderFactory
                 .get("usuarioStep")
                 .<UsuarioOrigem, UsuarioOrigem>chunk(10)
                 .reader(usuarioOrigemReader)
-                .writer(usuarioOrigemWriter)
+                .writer(usuarioOrigemWriterRest)
                 .build();
     }
 

@@ -15,7 +15,10 @@ public class UsuarioScheduleJobConfiguration {
 
     @Bean
     public JobDetail quartzJobDetail() {
-        return JobBuilder.newJob(UsuarioBatchScheduleJob.class).storeDurably().build();
+        return JobBuilder
+                .newJob(UsuarioBatchScheduleJob.class)
+                .storeDurably()
+                .build();
     }
 
     /**
