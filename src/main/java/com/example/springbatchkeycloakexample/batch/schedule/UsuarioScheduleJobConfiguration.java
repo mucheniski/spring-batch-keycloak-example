@@ -4,6 +4,12 @@ import org.quartz.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 @Configuration
 public class UsuarioScheduleJobConfiguration {
 
@@ -21,7 +27,9 @@ public class UsuarioScheduleJobConfiguration {
      * https://www.quartz-scheduler.org/api/2.1.7/org/quartz/SimpleScheduleBuilder.html
      */
     @Bean
-    public Trigger jobTrigger() {
+    public Trigger jobTrigger() throws ParseException {
+
+        Date dataInicioAgendamento = convertUTCToDate("27/02/2023 13:50:00");
 
         SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder
                 .simpleSchedule()
@@ -32,9 +40,17 @@ public class UsuarioScheduleJobConfiguration {
 
         return TriggerBuilder
                 .newTrigger()
+                .startAt(dataInicioAgendamento)
                 .forJob(quartzJobDetail())
                 .withSchedule(scheduleBuilder)
                 .build();
+    }
+
+    private static Date convertUTCToDate(String value) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+
+        return dateFormat.parse(value);
     }
 
 }
