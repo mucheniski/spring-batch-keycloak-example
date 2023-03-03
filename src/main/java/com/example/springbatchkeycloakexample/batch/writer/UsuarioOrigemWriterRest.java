@@ -34,7 +34,8 @@ public class UsuarioOrigemWriterRest implements ItemWriter<UsuarioOrigem> {
     @Override
     public void write(List<? extends UsuarioOrigem> usuarios) throws Exception {
         for (UsuarioOrigem usuarioOrigem : usuarios) {
-            enviaPostParaRealm(usuarioOrigem);
+            //enviaPostParaRealm(usuarioOrigem);
+            System.out.printf("Usuario: " + usuarioOrigem);
         }
     }
 

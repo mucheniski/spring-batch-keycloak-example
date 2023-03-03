@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value = "/usuariojob")
 public class UsuarioJobLauncher {
 
     @Autowired
@@ -24,7 +26,7 @@ public class UsuarioJobLauncher {
     @Autowired
     private ApplicationContext context;
 
-    @PostMapping("/usuariojob/run")
+    @PostMapping("/run")
     public ExitStatus runJob(@RequestBody JobLaunchRequest request) throws Exception {
 
         Job job = this.context.getBean(request.getName(), Job.class);
@@ -33,6 +35,5 @@ public class UsuarioJobLauncher {
 
         return this.jobLauncher.run(job, jobParameters).getExitStatus();
     }
-
 
 }

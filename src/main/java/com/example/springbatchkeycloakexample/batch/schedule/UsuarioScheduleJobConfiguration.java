@@ -32,7 +32,7 @@ public class UsuarioScheduleJobConfiguration {
     @Bean
     public Trigger jobTrigger() throws ParseException {
 
-        Date dataInicioAgendamento = convertUTCToDate("27/02/2023 13:50:00");
+        Date dataInicioAgendamento = convertUTCToDate("30/03/2023 13:50:00");
 
         SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder
                 .simpleSchedule()

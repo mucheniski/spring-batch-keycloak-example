@@ -20,13 +20,18 @@ public class SpringBatchKeycloakExampleApplication implements CommandLineRunner 
 	@Override
 	public void run(String... args) throws Exception {
 
-		UsuarioOrigem usuarioOrigem1 = new UsuarioOrigem(null,"Usuario1", "CPF", "Email");
-		UsuarioOrigem usuarioOrigem2 = new UsuarioOrigem(null,"Usuario2", "CPF", "Email");
-		UsuarioOrigem usuarioOrigem3 = new UsuarioOrigem(null,"Usuario3", "CPF", "Email");
+		for (int i = 0; i <= 1000000; i++) {
+			UsuarioOrigem usuarioOrigem = new UsuarioOrigem(i, "usuario"+i, "CPF"+i, "email"+i );
+			usuarioOrigemService.insert(usuarioOrigem);
+		}
 
-		usuarioOrigemService.insert(usuarioOrigem1);
-		usuarioOrigemService.insert(usuarioOrigem2);
-		usuarioOrigemService.insert(usuarioOrigem3);
+//		UsuarioOrigem usuarioOrigem1 = new UsuarioOrigem(null,"Usuario1", "CPF", "Email");
+//		UsuarioOrigem usuarioOrigem2 = new UsuarioOrigem(null,"Usuario2", "CPF", "Email");
+//		UsuarioOrigem usuarioOrigem3 = new UsuarioOrigem(null,"Usuario3", "CPF", "Email");
+//
+//		usuarioOrigemService.insert(usuarioOrigem1);
+//		usuarioOrigemService.insert(usuarioOrigem2);
+//		usuarioOrigemService.insert(usuarioOrigem3);
 
 	}
 }
